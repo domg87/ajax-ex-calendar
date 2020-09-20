@@ -26,3 +26,10 @@
     align-items: center;
     font-size: 50px;
 }
+
+#days {
+text-align: center;}
+
+.holidays {
+    color: red;
+}

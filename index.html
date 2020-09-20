@@ -12,14 +12,20 @@
 
         <div class="container">
             <div class="prev center"><i class="fas fa-chevron-left"></i></div>
-            <div class="center">
-                <span>2018</span>
+            <div class="day center">
+                <span>Gennaio 2018</span>
             </div>
             <div class="next center"><i class="fas fa-chevron-right"></i></div>
-        </div>
 
-        <script id="entry-template" type="text/x-handlebars-template">
-            <div class="center" data-giorno="{{numeroGiorno}}">{{giorno}}</div>
+
+        </div>
+        <ul id="days">
+
+        </ul>
+
+
+        <script id="day-template" type="text/x-handlebars-template">
+            <li class="day" data-giorno="{{date}}">{{day}} {{month}} <span class="holidayType"></span></li>
 
         </script>
         
