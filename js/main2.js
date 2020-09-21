@@ -1,5 +1,4 @@
 // FUNZIONI SCRIPT
-
 function renderCalendar(date) {
     // copia dell'oggetto date per manipolarlo come voglio
     var dateCalendar = moment(date);
@@ -35,20 +34,14 @@ function renderCalendar(date) {
     }
 }
 
-$(document).ready(function() {
-
-    var date = ("2018-01-01");
-    //var momentDate = moment("2018-01-01");
-    //console.log(momentDate.daysIsMonth());
-  
-    renderCalendar(date);
-
+// funzione che fa la chiamata alle api e stampa le festivita
+function renderHolidays(date) {
     $.ajax(
         {
             "url": "https://flynn.boolean.careers/exercises/api/holidays",
             "data": {
                 "year": 2018,
-                "month": date
+                "month": date.format("M") - 1
             },
             "method": "GET",
             "success": function(data) {
@@ -66,6 +59,19 @@ $(document).ready(function() {
             }
         }
     );
+}
+
+
+$(document).ready(function() {
+
+    var date = ("2018-01-01");
+    //var momentDate = moment("2018-01-01");
+    //console.log(momentDate.daysIsMonth());
+  
+    renderCalendar(date);
+    renderHolidays(date);
+
+    
 
     $(".prev").click(function() {
 
@@ -75,8 +81,10 @@ $(document).ready(function() {
             // spostare la data 1 mese indietro
             date.subtract(1, 'months');
             renderCalendar(date);
+            renderHolidays(date);
         }
 
     });
 
 });
+
